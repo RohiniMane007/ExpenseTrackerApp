@@ -1,3 +1,6 @@
+import 'package:expence_tracker/src/core/styles/size.dart';
+import 'package:expence_tracker/src/features/expense/domain/models/models.dart';
+import 'package:expence_tracker/src/features/expense/presentation/view/expense_view.dart';
 import 'package:flutter/material.dart';
 
 class ExpensePage extends StatefulWidget {
@@ -10,9 +13,10 @@ class ExpensePage extends StatefulWidget {
 class _ExpencePageState extends State<ExpensePage> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("asd"),
+        title: const Text("Expense"),
         backgroundColor: Colors.green,
       ),
       bottomNavigationBar: BottomAppBar(
@@ -43,10 +47,24 @@ class _ExpencePageState extends State<ExpensePage> {
         ),
       ),
       body: Container(
-        width: 200,
-        height: 200,
+        width: SizeConfig.screenWidth,
+        height: SizeConfig.screenHeight,
         margin: EdgeInsets.zero,
-        color: Colors.amber,
+        color: Colors.white10,
+        child: ExpenseList(expenseList: [
+          Expense(
+              id: 1,
+              category: "category",
+              amount: 100,
+              date: "date",
+              descrption: "descrption"),
+          Expense(
+              id: 2,
+              category: "category",
+              amount: 10,
+              date: "date",
+              descrption: "descrption"),
+        ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
