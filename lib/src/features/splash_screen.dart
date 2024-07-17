@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'expense/presentation/bloc/expense_bloc.dart';
 import 'expense/presentation/view/expense_view.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +22,12 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(milliseconds: 2000));
     if (!mounted) return;
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const ExpensePage()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => ExpenseBloc(),
+                  child: const ExpensePage(),
+                )));
   }
 
   @override

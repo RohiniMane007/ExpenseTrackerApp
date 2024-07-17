@@ -1,11 +1,10 @@
 import 'package:expence_tracker/src/features/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'src/core/database/database_helper.dart';
+// import 'src/core/database/database_helper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  DatabaseHelper dbHelper = DatabaseHelper.instance;
   runApp(const MyApp());
 }
 
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home:
-            const SplashScreen() //const MyHomePage(title: 'Flutter Demo Home Page'),
+            const SplashScreen() 
         );
   }
 }

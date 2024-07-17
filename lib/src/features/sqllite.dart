@@ -1,60 +1,76 @@
-import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final Database db = await initDatabase();
-  runApp(MyApp(database: db));
+class DatabaseHelper {
+  final _dbName = 'expenseDatabase';
+
+  static final DatabaseHelper instance = DatabaseHelper._internal();
+
+  static Database? _database;
+
+  DatabaseHelper._internal();
+
+  Future<Database> get database async {
+    if (_database != null) {
+      return _database!;
+    }
+
+    _database = await _initDatabase();
+    return _database!;
+  }
+
+  Future<Database> _initDatabase() async {
+    final databasePath = await getDatabasesPath();
+    final path = join(databasePath, _dbName);
+
+   
+    return openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database db, int version) async {
+        // Create the table
+        await db.execute(
+          '''CREATE TABLE expenses (
+          id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+          date TEXT,
+          amount TEXT,
+          description TEXT
+        )
+      ''');
+      },
+    );
+  }
+
+  Future<void> insertItem(Database db, Map<String, dynamic> item) async {
+    await db.insert(
+      'expenses',
+      item,
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<Map<String, dynamic>>> getItems(Database db) async {
+    return await db.query('expenses');
+  }
+
+  Future<void> updateItem(Database db, Map<String, dynamic> item) async {
+    await db.update(
+      'expenses',
+      item,
+      where: 'id = ?',
+      whereArgs: [item['id']],
+    );
+  }
+
+  Future<void> deleteItem(Database db, int id) async {
+    await db.delete(
+      'expenses',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }
-
-Future<Database> initDatabase() async {
-  // Get the default database path
-  final databasePath = await getDatabasesPath();
-  final path = join(databasePath, 'example.db');
-
-  // Open the database, creating it if it doesn't exist
-  return openDatabase(
-    path,
-    version: 1,
-    onCreate: (Database db, int version) async {
-      // Create the table
-      await db.execute(
-        'CREATE TABLE items(id INTEGER PRIMARY KEY, name TEXT, value INTEGER)',
-      );
-    },
-  );
-}
-
-Future<void> insertItem(Database db, Map<String, dynamic> item) async {
-  await db.insert(
-    'items',
-    item,
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-}
-
-Future<List<Map<String, dynamic>>> getItems(Database db) async {
-  return await db.query('items');
-}
-
-Future<void> updateItem(Database db, Map<String, dynamic> item) async {
-  await db.update(
-    'items',
-    item,
-    where: 'id = ?',
-    whereArgs: [item['id']],
-  );
-}
-
-Future<void> deleteItem(Database db, int id) async {
-  await db.delete(
-    'items',
-    where: 'id = ?',
-    whereArgs: [id],
-  );
-}
-
+/*
 class MyApp extends StatelessWidget {
   final Database database;
 
@@ -103,3 +119,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/

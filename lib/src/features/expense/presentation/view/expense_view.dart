@@ -1,2 +1,2 @@
-export 'expense_page.dart';
+export 'pages/expense_page.dart';
 export 'widget/widget.dart';
