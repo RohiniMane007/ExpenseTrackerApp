@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'expense/presentation/bloc/expense_bloc.dart';
-import 'expense/presentation/view/expense_view.dart';
+// import 'expense/presentation/bloc/expense_bloc.dart';
+import 'expense/presentation/expense_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,10 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => ExpenseBloc(),
-                  child: const ExpensePage(),
-                )));
+            builder: (context) => const ExpensePage()));
   }
 
   @override

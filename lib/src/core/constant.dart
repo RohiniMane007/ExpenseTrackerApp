@@ -9,3 +9,13 @@ Future<DateTime?> dateTimePicker(BuildContext context) {
       lastDate: DateTime(2050),
       initialEntryMode: DatePickerEntryMode.calendarOnly);
 }
+
+List<String> category = [
+  'Education',
+  'Food',
+  'Transportation',
+  'Health',
+  'Housing',
+  'Other'
+
+];

@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import '../../features/expense/domain/models/expense_models.dart';
+import '../domain/models/expense_models.dart';
 
 class DatabaseHelper {
   final _dbName = 'expenseDatabase';

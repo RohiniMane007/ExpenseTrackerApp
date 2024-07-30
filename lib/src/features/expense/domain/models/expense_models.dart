@@ -1,11 +1,13 @@
-class Expense {
+import 'package:equatable/equatable.dart';
+
+class Expense extends Equatable {
   final int? id;
   final String? category;
   final String? amount;
   final String? date;
   final String? description;
 
-  Expense({
+  const Expense({
     this.id,
     required this.category,
     required this.amount,
@@ -13,19 +15,9 @@ class Expense {
     required this.description,
   });
 
-  // Expense copy(
-  //         {int? id,
-  //         String? category,
-  //         double? amount,
-  //         String? date,
-  //         String? descrption}) =>
-  //     Expense(
-  //       id: id ?? this.id,
-  //       category: category ?? this.category,
-  //       amount: amount ?? this.amount,
-  //       date: date ?? this.date,
-  //       descrption: descrption ?? this.descrption,
-  //     );
+  @override
+  List<Object?> get props => [id, category, amount, date, description];
+
 
   factory Expense.fromJson(Map<String, Object?> json) => Expense(
         id: json["id"] as int,

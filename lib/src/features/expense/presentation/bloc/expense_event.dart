@@ -2,11 +2,12 @@
 part of 'expense_bloc.dart';
 
 @immutable
-sealed class ExpenseEvent {}
-
-class ExpenseListEvent extends ExpenseEvent {
-  ExpenseListEvent();
+abstract class ExpenseEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
 }
+
+class ExpenseListEvent extends ExpenseEvent {}
 
 class ExpenseAddEvent extends ExpenseEvent {
   final Expense expense;
