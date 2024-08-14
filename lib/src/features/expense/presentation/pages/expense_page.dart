@@ -3,7 +3,7 @@ import 'package:expence_tracker/src/features/expense/domain/models/models.dart';
 import 'package:expence_tracker/src/features/expense/presentation/expense_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constant.dart';
+// import '../../../../core/constant.dart';
 import '../bloc/expense_bloc.dart';
 import 'add_expense.dart';
 
@@ -67,7 +67,7 @@ class _ExpencePageState extends State<ExpensePage> {
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
         margin: const EdgeInsets.only(top: 10, bottom: 30),
-        color: Colors.white10,
+        // color: Colors.white10, 
         child: BlocBuilder<ExpenseBloc, ExpenseState>(
           builder: (context, state) {
             return ShowExpense(expenseList: state.expenseList);
