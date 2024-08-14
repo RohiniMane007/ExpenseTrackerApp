@@ -13,9 +13,17 @@ Future<DateTime?> dateTimePicker(BuildContext context) {
 List<String> category = [
   'Education',
   'Food',
-  'Transportation',
+  'Transport',
   'Health',
   'Housing',
   'Other'
-
 ];
+
+Map<String, String> iconList = {
+  'Education': 'assets/icons/education.png',
+  'Food':'assets/icons/food.png',
+  'Transport':'assets/icons/transport.png',
+  'Health':'assets/icons/health.png',
+  'Housing':'assets/icons/house.png',
+  'Other':'assets/icons/food.png'
+};

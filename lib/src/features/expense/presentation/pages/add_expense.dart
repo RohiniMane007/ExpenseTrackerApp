@@ -61,6 +61,7 @@ class _AddExpenseState extends State<AddExpense> {
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: TextField(
                   controller: txtAmount,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Amount',
                     border: OutlineInputBorder(),
@@ -105,12 +106,14 @@ class _AddExpenseState extends State<AddExpense> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text("Cancel")),
-                  TextButton(
+                  // TextButton(
+                  //   style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                  //     onPressed: () {
+                  //       Navigator.of(context).pop();
+                  //     },
+                  //     child: const Text("Cancel")),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
                     child: const Text("Add"),
                     onPressed: () async {
                       BlocProvider.of<ExpenseBloc>(context).add(ExpenseAddEvent(

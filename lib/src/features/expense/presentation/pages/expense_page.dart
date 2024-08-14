@@ -32,7 +32,7 @@ class _ExpencePageState extends State<ExpensePage> {
           "Expense",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color.fromARGB(255, 101, 39, 112),
+        backgroundColor: Colors.teal,
       ),
       /*bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
@@ -76,7 +76,7 @@ class _ExpencePageState extends State<ExpensePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal,
         onPressed: () async {
           // Navigator.push(context, MaterialPageRoute(builder: (context) {
           //   return BlocProvider.value(

@@ -4,6 +4,7 @@ import 'package:expence_tracker/src/features/expense/presentation/pages/update_e
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constant.dart';
 import '../../../../core/styles/textstyle.dart';
 import '../../data/expence_api.dart';
 import '../../domain/models/models.dart';
@@ -41,10 +42,11 @@ class _ShowExpenseState extends State<ShowExpense> {
               widget.expenseList.removeAt(i);
 
               ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text("dismissed")));
+                  .showSnackBar(const SnackBar(content: Text("Deleted")));
             },
             child: Card(
-              color: Color.fromARGB(255, 179, 154, 184),
+              elevation: 3,
+              color: Colors.teal,
               margin: const EdgeInsets.only(right: 10, left: 10),
               shape:  RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               
@@ -53,10 +55,18 @@ class _ShowExpenseState extends State<ShowExpense> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                   
                     Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(widget.expenseList[i].category!,
+                        Row(
+                          children: [
+                            SizedBox(width: 25,height: 25, child: Image.asset(iconList[widget.expenseList[i].category!]!)),
+                            const SizedBox(width: 10,),
+                            Text(widget.expenseList[i].category!,
                             style: CustomTextStyle.titleTextStylet()),
+                          ],
+                        ),
+                        
                         Text(widget.expenseList[i].date!,
                             style: CustomTextStyle.subTextStyle())
                       ],

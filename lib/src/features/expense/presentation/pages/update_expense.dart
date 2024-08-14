@@ -42,17 +42,18 @@ class _UpdateExpenseState extends State<UpdateExpense> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Material(
-      
+      // color: Colors.teal,
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: SizedBox(
           width: SizeConfig.screenWidth,
-          height: 400,
+          // height: 400,
           child: Column(
             children: [
-              Expanded(
+              Flexible(
+                fit: FlexFit.loose,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
                   child: DropdownMenu<String>(
                     initialSelection: categoryValue,
                     expandedInsets: const EdgeInsets.symmetric(),
@@ -68,22 +69,26 @@ class _UpdateExpenseState extends State<UpdateExpense> {
                   ),
                 ),
               ),
-              Expanded(
+              Flexible(
+                  fit: FlexFit.loose,
                   child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: TextField(
-                  controller: txtDescription,
-                  decoration: const InputDecoration(
-                    labelText: 'Description',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              )),
-              Expanded(
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10),
+                    child: TextField(
+                      controller: txtDescription,
+                      decoration: const InputDecoration(
+                        labelText: 'Description',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  )),
+              Flexible(
+                fit: FlexFit.loose,
                   child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 50),
                 child: TextField(
                     controller: txtAmount,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       labelText: 'Amount',
                       border: OutlineInputBorder(),
@@ -91,7 +96,7 @@ class _UpdateExpenseState extends State<UpdateExpense> {
               )),
               Expanded(
                   child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 50),
                 child: TextField(
                   controller: txtDate,
                   readOnly: true,
@@ -112,6 +117,7 @@ class _UpdateExpenseState extends State<UpdateExpense> {
                 ),
               )),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
                 onPressed: () async {
                   BlocProvider.of<ExpenseBloc>(context).add(ExpenseUpdateEvent(
                       expense: Expense(
@@ -120,7 +126,7 @@ class _UpdateExpenseState extends State<UpdateExpense> {
                           description: txtDescription.text,
                           date: txtDate.text,
                           amount: txtAmount.text)));
-        
+
                   String? res = await showAdaptiveDialog<String>(
                       context: context,
                       builder: (context) {
@@ -135,7 +141,7 @@ class _UpdateExpenseState extends State<UpdateExpense> {
                           ],
                         );
                       });
-        
+
                   if (res == 'ok') {
                     if (!context.mounted) return;
                     Navigator.of(context).pop();
