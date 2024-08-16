@@ -63,7 +63,7 @@ class _ShowExpenseState extends State<ShowExpense> {
                             SizedBox(width: 25,height: 25, child: Image.asset(iconList[widget.expenseList[i].category!]!)),
                             const SizedBox(width: 10,),
                             Text(widget.expenseList[i].category!,
-                            style: CustomTextStyle.titleTextStylet()),
+                            style: CustomTextStyle.titleTextStyle()),
                           ],
                         ),
                         
@@ -74,7 +74,7 @@ class _ShowExpenseState extends State<ShowExpense> {
                     Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(widget.expenseList[i].amount.toString(),
-                            style: CustomTextStyle.titleTextStylet()),
+                            style: CustomTextStyle.titleTextStyle()),
                         SizedBox(
                          
                           width: 50,

@@ -1,20 +1,24 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:expence_tracker/src/features/expense/data/expence_api.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/database_helper.dart';
+// import '../../data/database_helper.dart';
 import '../../domain/models/models.dart';
 
 part 'expense_event.dart';
 part 'expense_state.dart';
 
 class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
-  ExpenseBloc() : super(const ExpenseState()) {
+
     DatabaseHelper dbHelper = DatabaseHelper.instance;
+  ExpenseBloc() : super(const ExpenseState()) {
+
+    // ExpenseService expenseService;
     // on<ExpenseEvent>((event, emit) {});
     on<ExpenseListEvent>((event, emit) async {
       List<Map<String, dynamic>> res =
-          await dbHelper.getItems(await dbHelper.database);
+          await ExpenseService.getItems(await dbHelper.database);
 
       List<Expense> expenseList =
           res.map((item) => Expense.fromJson(item)).toList();
@@ -23,10 +27,10 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
     });
 
     on<ExpenseAddEvent>((event, emit) async {
-      await dbHelper.insertItem(await dbHelper.database, event.expense);
+      await ExpenseService.insertItem(await dbHelper.database, event.expense);
 
       List<Map<String, dynamic>> res =
-          await dbHelper.getItems(await dbHelper.database);
+          await ExpenseService.getItems(await dbHelper.database);
 
       List<Expense> expenseList =
           res.map((item) => Expense.fromJson(item)).toList();
@@ -36,10 +40,10 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
     });
 
     on<ExpenseUpdateEvent>((event, emit) async {
-      await dbHelper.updateItem(await dbHelper.database, event.expense);
+      await ExpenseService.updateItem(await dbHelper.database, event.expense);
 
       List<Map<String, dynamic>> res =
-          await dbHelper.getItems(await dbHelper.database);
+          await ExpenseService.getItems(await dbHelper.database);
 
       List<Expense> expenseList =
           res.map((item) => Expense.fromJson(item)).toList();
@@ -49,9 +53,9 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
     });
 
     on<ExpenseDeleteEvent>((event, emit) async {
-      await dbHelper.deleteItem(await dbHelper.database, event.id);
+      await ExpenseService.deleteItem(await dbHelper.database, event.id);
       List<Map<String, dynamic>> res =
-          await dbHelper.getItems(await dbHelper.database);
+          await ExpenseService.getItems(await dbHelper.database);
 
       List<Expense> expenseList =
           res.map((item) => Expense.fromJson(item)).toList();

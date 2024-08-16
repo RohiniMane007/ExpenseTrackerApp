@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // import 'src/core/utils/responsive_screen.dart';
+// import 'src/features/auth/presentation/view/login_screen.dart';
 import 'src/features/expense/presentation/bloc/expense_bloc.dart';
 import 'src/features/splash_screen.dart';
 // import 'src/features/auth/presentation/view/login_screen.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(
               
               seedColor: Colors.blue,
-              primary: Colors.white
+              // primary: Colors.white
               // brightness: Brightness.dark
             ),
             useMaterial3: true,

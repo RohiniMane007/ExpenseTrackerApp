@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import '../domain/models/expense_models.dart';
+// import '../domain/models/expense_models.dart';
 
 class DatabaseHelper {
   final _dbName = 'expenseDatabase';
@@ -38,11 +38,21 @@ class DatabaseHelper {
           description TEXT
         )
       ''');
+
+        await db.execute('''CREATE TABLE user (
+          id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+          name TEXT,
+          email TEXT,
+          phone_no TEXT,
+          username TEXT,
+          password TEXT
+        )
+      ''');
       },
     );
   }
 
-  Future<void> insertItem(Database db, Expense item) async {
+ /* Future<void> insertItem(Database db, Expense item) async {
     await db.insert(
       'expenses',
       item.toJson(),
@@ -69,7 +79,7 @@ class DatabaseHelper {
       where: 'id = ?',
       whereArgs: [id],
     );
-  }
+  }*/
 
   Future close() async {
     final db = await instance.database;

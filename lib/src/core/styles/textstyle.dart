@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextStyle {
-  static TextStyle titleTextStylet() {
+  static TextStyle titleTextStyle() {
     return const TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Colors.white);
   }
 
