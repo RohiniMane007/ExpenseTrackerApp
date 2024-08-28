@@ -1,3 +1,6 @@
+import 'package:expence_tracker/src/features/auth/presentation/view/view.dart';
+import 'package:expence_tracker/src/route/route_data.dart';
+import 'package:expence_tracker/src/route/route_names.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,12 +22,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigate() async {
-    await Future.delayed(const Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(seconds: 3));
     if (!mounted) return;
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const ExpensePage()));
+    // Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => const LoginScreen()));
+    Navigator.pushReplacementNamed(context, RouteNames.login); 
+      // RouteData.getRouteData(context, RouteNames.login, {});   
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:expence_tracker/src/core/styles/size.dart';
 import 'package:expence_tracker/src/features/expense/domain/models/models.dart';
 import 'package:expence_tracker/src/features/expense/presentation/expense_view.dart';
+import 'package:expence_tracker/src/route/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import '../../../../core/constant.dart';
@@ -85,9 +86,11 @@ class _ExpencePageState extends State<ExpensePage> {
           //   );
           // }));
 
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const AddExpense();
-          }));
+          // Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //   return const AddExpense();
+          // }));
+          Navigator.pushNamed(context, RouteNames.addExpense);
+
           /* await showAdaptiveDialog<String>(
               context: context,
               barrierDismissible: false,

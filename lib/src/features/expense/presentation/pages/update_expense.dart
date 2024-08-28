@@ -8,7 +8,8 @@ import '../../domain/models/models.dart';
 
 class UpdateExpense extends StatefulWidget {
   const UpdateExpense({super.key, required this.expense});
-  final Expense expense;
+  final Map<String, dynamic> expense;
+  // final Expense expense;
 
   @override
   State<UpdateExpense> createState() => _UpdateExpenseState();
@@ -23,10 +24,11 @@ class _UpdateExpenseState extends State<UpdateExpense> {
   @override
   void initState() {
     super.initState();
-    txtAmount.text = widget.expense.amount!;
-    txtDescription.text = widget.expense.description!;
-    txtDate.text = widget.expense.date!;
-    categoryValue = widget.expense.category!;
+    print(widget.expense.toString());
+    // txtAmount.text = widget.expense.amount!;
+    // txtDescription.text = widget.expense.description!;
+    // txtDate.text = widget.expense.date!;
+    // categoryValue = widget.expense.category!;
   }
 
   @override
@@ -119,13 +121,13 @@ class _UpdateExpenseState extends State<UpdateExpense> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
                 onPressed: () async {
-                  BlocProvider.of<ExpenseBloc>(context).add(ExpenseUpdateEvent(
-                      expense: Expense(
-                          id: widget.expense.id,
-                          category: widget.expense.category,
-                          description: txtDescription.text,
-                          date: txtDate.text,
-                          amount: txtAmount.text)));
+                  // BlocProvider.of<ExpenseBloc>(context).add(ExpenseUpdateEvent(
+                  //     expense: Expense(
+                  //         id: widget.expense.id,
+                  //         category: widget.expense.category,
+                  //         description: txtDescription.text,
+                  //         date: txtDate.text,
+                  //         amount: txtAmount.text)));
 
                   String? res = await showAdaptiveDialog<String>(
                       context: context,

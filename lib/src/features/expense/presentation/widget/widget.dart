@@ -1,6 +1,7 @@
 import 'package:expence_tracker/src/core/styles/size.dart';
 import 'package:expence_tracker/src/features/expense/presentation/bloc/expense_bloc.dart';
 import 'package:expence_tracker/src/features/expense/presentation/pages/update_expense.dart';
+import 'package:expence_tracker/src/route/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -88,11 +89,12 @@ class _ShowExpenseState extends State<ShowExpense> {
                       children: [
                         IconButton(
                             onPressed: () async {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return UpdateExpense(
-                                    expense: widget.expenseList[i]);
-                              }));
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return UpdateExpense(
+                              //       expense: widget.expenseList[i]);
+                              // }));
+                              Navigator.pushNamed(context, RouteNames.updateExpense, arguments: widget.expenseList[i]);
                             },
                             icon: const Icon(Icons.edit)),
                         IconButton(
