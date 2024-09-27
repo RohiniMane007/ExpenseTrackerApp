@@ -56,33 +56,46 @@ class _ShowExpenseState extends State<ShowExpense> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   
-                    Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: SizedBox(width: 35,height: 35, child: Image.asset(iconList[widget.expenseList[i].category!]!)),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        /*Row(
                           children: [
                             SizedBox(width: 25,height: 25, child: Image.asset(iconList[widget.expenseList[i].category!]!)),
                             const SizedBox(width: 10,),
                             Text(widget.expenseList[i].category!,
                             style: CustomTextStyle.titleTextStyle()),
                           ],
+                        ),*/
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(widget.expenseList[i].category!,
+                              style: CustomTextStyle.titleTextStyle()),
                         ),
-                        
-                        Text(widget.expenseList[i].date!,
-                            style: CustomTextStyle.subTextStyle())
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: SizedBox(
+                            width: 50,
+                            child: Text(widget.expenseList[i].description!,
+                                overflow: TextOverflow.ellipsis,
+                                style: CustomTextStyle.subTextStyle()),
+                          ),
+                        )
+                        // Text(widget.expenseList[i].date!,
+                        //     style: CustomTextStyle.subTextStyle())
                       ],
                     ),
                     Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(widget.expenseList[i].amount.toString(),
+                        Text( " ₹ ${widget.expenseList[i].amount.toString()}",
                             style: CustomTextStyle.titleTextStyle()),
-                        SizedBox(
-                         
-                          width: 50,
-                          child: Text(widget.expenseList[i].description!,
-                              overflow: TextOverflow.ellipsis,
-                              style: CustomTextStyle.subTextStyle()),
-                        )
+                         Text(widget.expenseList[i].date!,
+                            style: CustomTextStyle.subTextStyle())
                       ],
                     ),
                     Row(
@@ -97,13 +110,14 @@ class _ShowExpenseState extends State<ShowExpense> {
                               Navigator.pushNamed(context, RouteNames.updateExpense, arguments: widget.expenseList[i]);
                             },
                             icon: const Icon(Icons.edit)),
-                        IconButton(
+                       
+                        /*IconButton(
                             onPressed: () async {
                               BlocProvider.of<ExpenseBloc>(context).add(
                                   ExpenseDeleteEvent(
                                       id: widget.expenseList[i].id!));
                             },
-                            icon: const Icon(Icons.delete))
+                            icon: const Icon(Icons.delete)) */
                       ],
                     )
                   ],

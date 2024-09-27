@@ -85,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed(RouteNames.expenseList);
+                          Navigator.of(context).pushReplacementNamed(RouteNames.expenseList);
                           // RouteData.getRouteData(context, RouteNames.login, {});
                         },
                         style: ElevatedButton.styleFrom(
