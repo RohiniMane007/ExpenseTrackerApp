@@ -1,11 +1,11 @@
-import 'package:expence_tracker/src/features/auth/presentation/view/view.dart';
-import 'package:expence_tracker/src/route/route_data.dart';
+// import 'package:expence_tracker/src/features/auth/presentation/view/view.dart';
+// import 'package:expence_tracker/src/route/route_data.dart';
 import 'package:expence_tracker/src/route/route_names.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 
 // import 'expense/presentation/bloc/expense_bloc.dart';
-import 'expense/presentation/expense_view.dart';
+// import 'expense/presentation/expense_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

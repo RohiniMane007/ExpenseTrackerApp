@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/textstyle.dart';
+// import '../../../../core/styles/textstyle.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({super.key});
